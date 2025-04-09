@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="new-chat">
+                <button id="new-chat-btn">
+                    <i class="fas fa-plus"></i> New chat
+                </button>
+            </div>
+            <div class="history">
+                <div class="history-header">
+                    <h3>Chat History</h3>
+                    <button id="clear-history-btn" class="clear-history-btn">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <ul id="chat-history">
+                    <!-- Chat history items will be added here by JavaScript -->
+                </ul>
+            </div>
+            <div class="user-section">
+                <div class="user-info">
+                    <i class="fas fa-user"></i>
+                    <span>User Account</span>
+                </div>
+                <button id="profile-btn" class="profile-btn">
+                    <i class="fas fa-id-card"></i> Your Information
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <h2>AI Assistant</h2>
+                <div class="model-selector">
+                    <select id="model-select">
+                        <option value="default">Default Model</option>
+                        <option value="advanced">Advanced Model</option>
+                        <option value="fast">Fast Model</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Chat Messages Container -->
+            <div class="chat-container" id="chat-container">
+                <div class="welcome-message">
+                    <h1>How can I help you today?</h1>
+                    <p>This is a simple AI chat interface similar to ChatGPT. Start by typing a message below.</p>
+                </div>
+                <!-- Messages will be added here by JavaScript -->
+            </div>
+            
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea id="user-input" placeholder="Type a message..." rows="1"></textarea>
+                    <button id="send-btn" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="disclaimer">
+                    <p>AI may produce inaccurate information. Your conversations will be used to improve the model.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Info Modal -->
+    <div id="user-info-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Your Information</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="user-info-form">
+                    <div class="form-group">
+                        <label for="user-name">Name:</label>
+                        <input type="text" id="user-name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="university">University:</label>
+                        <input type="text" id="university" placeholder="University attended">
+                    </div>
+                    <div class="form-group">
+                        <label for="current-year">Current Year:</label>
+                        <select id="current-year">
+                            <option value="">Select year</option>
+                            <option value="Freshman">Freshman</option>
+                            <option value="Sophomore">Sophomore</option>
+                            <option value="Junior">Junior</option>
+                            <option value="Senior">Senior</option>
+                            <option value="Graduate">Graduate</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="major">Major:</label>
+                        <input type="text" id="major" placeholder="Your major">
+                    </div>
+                    <div class="form-group">
+                        <label for="courses">Courses Taken:</label>
+                        <textarea id="courses" placeholder="List courses you've taken (separated by commas)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Future Plans:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="graduate-school">
+                            <label for="graduate-school">Apply to graduate school</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="work">
+                            <label for="work">Enter workforce</label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="save-info-btn">Save Information</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

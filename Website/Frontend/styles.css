@@ -1,0 +1,620 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f7f8;
+    color: #343541;
+    height: 100vh;
+}
+
+/* Main App Container */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 260px;
+    background-color: #202123;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.new-chat {
+    padding: 15px;
+    border-bottom: 1px solid #424242;
+}
+
+#new-chat-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #343541;
+    color: white;
+    border: 1px solid #565869;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+#new-chat-btn:hover {
+    background-color: #40414f;
+}
+
+.history {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.history h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    color: #888;
+}
+
+#chat-history {
+    list-style-type: none;
+}
+
+.chat-history-item {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.chat-history-item:hover {
+    background-color: #343541;
+}
+
+.history-icon {
+    margin-right: 8px;
+    color: #888;
+}
+
+.user-section {
+    padding: 15px;
+    border-top: 1px solid #424242;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+/* Chat Header */
+.chat-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h2 {
+    font-size: 18px;
+    color: #343541;
+    font-weight: 500;
+}
+
+.model-selector select {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #d9d9e3;
+    background-color: #f7f7f8;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Chat Container */
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.welcome-message {
+    text-align: center;
+    margin: auto;
+    max-width: 600px;
+    padding: 40px 20px;
+}
+
+.welcome-message h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #343541;
+}
+
+.welcome-message p {
+    font-size: 16px;
+    color: #6e6e80;
+    line-height: 1.5;
+}
+
+.message {
+    display: flex;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.user-message {
+    background-color: #f7f7f8;
+}
+
+.ai-message {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.message-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    background-color: #10a37f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.user-avatar {
+    background-color: #343541;
+}
+
+.message-content {
+    flex: 1;
+    line-height: 1.5;
+}
+
+.message-content p {
+    margin-bottom: 10px;
+}
+
+.message-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Loading animation */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10a37f;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Input Area */
+.input-area {
+    padding: 15px 20px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.input-container {
+    display: flex;
+    background-color: #ffffff;
+    border: 1px solid #d9d9e3;
+    border-radius: 5px;
+    padding: 8px 15px;
+    align-items: flex-end;
+}
+
+#user-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    max-height: 200px;
+    resize: none;
+    line-height: 1.5;
+    padding: 5px 0;
+}
+
+#send-btn {
+    background: transparent;
+    border: none;
+    color: #10a37f;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+#send-btn:hover {
+    color: #0d8c6c;
+}
+
+#send-btn:disabled {
+    color: #d9d9e3;
+    cursor: not-allowed;
+}
+
+.disclaimer {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #6e6e80;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+/* Add these styles to your existing styles.css file */
+
+/* Profile Button */
+.profile-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #343541;
+    color: white;
+    border: 1px solid #565869;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.profile-btn:hover {
+    background-color: #40414f;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    background-color: #f7f7f8;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    color: #343541;
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343541;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #343541;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d9d9e3;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f7f7f8;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+#save-info-btn {
+    padding: 10px 20px;
+    background-color: #10a37f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#save-info-btn:hover {
+    background-color: #0d8c6c;
+}
+
+/* Add these styles to your existing styles.css file */
+
+/* History header with clear button */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.clear-history-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.clear-history-btn:hover {
+    color: #ff6b6b;
+}
+
+/* Profile Button */
+.profile-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #343541;
+    color: white;
+    border: 1px solid #565869;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.profile-btn:hover {
+    background-color: #40414f;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    background-color: #f7f7f8;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    color: #343541;
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343541;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #343541;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d9d9e3;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f7f7f8;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+#save-info-btn {
+    padding: 10px 20px;
+    background-color: #10a37f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#save-info-btn:hover {
+    background-color: #0d8c6c;
+}
+
+/* History feedback message */
+.history-feedback {
+    text-align: center;
+    padding: 8px;
+    margin: 10px 0;
+    background-color: #343541;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    animation: fadeOut 2s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
